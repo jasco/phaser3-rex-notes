@@ -2,7 +2,7 @@ const pluginList = require('./plugin-list.js');
 const path = require('path')
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -23,11 +23,11 @@ module.exports = {
     },
     optimization: {
         minimizer: [
-            new UglifyJSPlugin({
+            new TerserPlugin({
                 include: /\.min\.js$/,
                 parallel: true,
                 sourceMap: false,
-                uglifyOptions: {
+                terserOptions: {
                     compress: true,
                     ie8: false,
                     output: {

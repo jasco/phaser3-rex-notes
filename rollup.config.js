@@ -2,8 +2,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import globals from 'rollup-plugin-node-globals';
 import builtins from 'rollup-plugin-node-builtins';
-import { uglify } from "rollup-plugin-uglify";
-// import { terser } from 'rollup-plugin-terser'; // Uglify for ES6
+import { terser } from "rollup-plugin-terser";
 import babel from 'rollup-plugin-babel';
 
 const pluginList = require('./plugin-list.js');
@@ -33,7 +32,7 @@ for (var key in pluginList) {
             babel({
                 exclude: 'node_modules/**'
             }),
-            uglify()
+            terser()
         ]
     })
 }
