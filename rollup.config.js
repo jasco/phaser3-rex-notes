@@ -1,9 +1,9 @@
-import commonjs from 'rollup-plugin-commonjs';
-import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import globals from 'rollup-plugin-node-globals';
 import builtins from 'rollup-plugin-node-builtins';
 import { terser } from "rollup-plugin-terser";
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
 
 const pluginList = require('./plugin-list.js');
 
@@ -30,6 +30,7 @@ for (var key in pluginList) {
             globals(),
             builtins(),
             babel({
+                babelHelpers: "bundled",
                 exclude: 'node_modules/**'
             }),
             terser()
